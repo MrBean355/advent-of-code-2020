@@ -1,3 +1,5 @@
+// https://adventofcode.com/2020/day/4
+
 fun main() {
     val passports = loadTextResource("day4.txt")
     println("Part 1: ${passports.countValidPassports(validateProperties = false)}")

@@ -1,3 +1,5 @@
+// https://adventofcode.com/2020/day/3
+
 fun main() {
     val slope = loadTextResource("day3.txt")
 
