@@ -1,3 +1,6 @@
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 import kotlin.math.PI
 import kotlin.math.absoluteValue
 import kotlin.math.cos

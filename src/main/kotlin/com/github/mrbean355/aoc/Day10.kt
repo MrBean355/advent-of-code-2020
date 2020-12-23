@@ -1,3 +1,7 @@
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
+
 fun main() {
     val joltages = loadTextResource("day10.txt")
         .map { it.toLong() }

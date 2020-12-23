@@ -1,3 +1,6 @@
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 import org.jgrapht.graph.DefaultEdge
 import org.jgrapht.graph.SimpleDirectedGraph
 import org.jgrapht.traverse.DepthFirstIterator

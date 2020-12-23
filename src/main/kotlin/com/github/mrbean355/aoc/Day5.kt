@@ -1,4 +1,6 @@
-// https://adventofcode.com/2020/day/5
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 
 fun main() {
     val boardingPasses = loadTextResource("day5.txt")

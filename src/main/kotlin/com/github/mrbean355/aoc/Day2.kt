@@ -1,4 +1,6 @@
-// https://adventofcode.com/2020/day/2
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 
 fun main() {
     val passwords = loadTextResource("day2.txt")

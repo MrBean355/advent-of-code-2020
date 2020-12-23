@@ -1,4 +1,6 @@
-// https://adventofcode.com/2020/day/4
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 
 fun main() {
     val passports = loadTextResource("day4.txt")

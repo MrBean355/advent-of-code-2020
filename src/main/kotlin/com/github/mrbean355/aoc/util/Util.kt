@@ -1,3 +1,5 @@
+package com.github.mrbean355.aoc.util
+
 import java.io.File
 
 fun loadTextResource(name: String): List<String> {

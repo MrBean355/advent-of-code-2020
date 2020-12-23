@@ -1,4 +1,6 @@
-// https://adventofcode.com/2020/day/11
+package com.github.mrbean355.aoc
+
+import com.github.mrbean355.aoc.util.loadTextResource
 
 fun main() {
     val seats = loadTextResource("day11.txt")
