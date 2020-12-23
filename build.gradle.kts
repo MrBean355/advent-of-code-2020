@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     implementation("org.jgrapht:jgrapht-core:1.4.0")
+    testImplementation("junit:junit:4.13.1")
 }
 
 tasks.withType<KotlinCompile>() {

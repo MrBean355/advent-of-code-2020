@@ -1,6 +1,6 @@
 package com.github.mrbean355.aoc
 
-import com.github.mrbean355.aoc.util.loadTextResource
+import com.github.mrbean355.aoc.base.loadTextResource
 
 private const val PREAMBLE_SIZE = 25
 

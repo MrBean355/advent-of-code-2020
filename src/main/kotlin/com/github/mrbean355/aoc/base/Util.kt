@@ -1,4 +1,4 @@
-package com.github.mrbean355.aoc.util
+package com.github.mrbean355.aoc.base
 
 import java.io.File
 
