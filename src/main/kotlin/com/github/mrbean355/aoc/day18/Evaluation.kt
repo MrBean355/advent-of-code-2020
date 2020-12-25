@@ -6,9 +6,9 @@ import java.util.Stack
 /**
  * Evaluate an infix notation expression (e.g. 3 + 4 * 5).
  */
-fun evaluateExpression(expression: String): Long {
+fun evaluateExpression(expression: String, precedence: Precedence): Long {
     val tokens = expression.tokenise()
-    val output = infixToPostfix(tokens).toMutableList()
+    val output = infixToPostfix(tokens, precedence).toMutableList()
 
     val eval = Stack<Long>()
     while (output.isNotEmpty()) {
@@ -34,7 +34,7 @@ fun evaluateExpression(expression: String): Long {
  * Convert an infix notation expression (3 + 4) to postfix notation (3 4 +).
  * See: https://en.wikipedia.org/wiki/Shunting-yard_algorithm
  */
-private fun infixToPostfix(tokens: List<String>): List<String> {
+private fun infixToPostfix(tokens: List<String>, precedence: Precedence): List<String> {
     val output = ArrayDeque<String>()
     val operators = Stack<String>()
 
@@ -42,12 +42,11 @@ private fun infixToPostfix(tokens: List<String>): List<String> {
         when {
             token.toLongOrNull() != null -> output.offer(token)
             token.isOperator() -> {
-                while (operators.isNotEmpty()) {
-                    if (operators.peek() == "(") {
-                        break
-                    } else {
-                        output.offer(operators.pop())
-                    }
+                while (operators.isNotEmpty()
+                    && operators.peek() != "("
+                    && precedence.greaterOrEqual(operators.peek(), token)
+                ) {
+                    output.offer(operators.pop())
                 }
                 operators.push(token)
             }

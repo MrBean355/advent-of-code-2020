@@ -68,4 +68,67 @@ class Day18Test {
 
         assertEquals(11297104473091, result)
     }
+
+    @Test
+    fun testPart2_Example1() {
+        val solution = Day18(loadTextResource("day18/part2_example1.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(231, result)
+    }
+
+    @Test
+    fun testPart2_Example2() {
+        val solution = Day18(loadTextResource("day18/part2_example2.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(51, result)
+    }
+
+    @Test
+    fun testPart2_Example3() {
+        val solution = Day18(loadTextResource("day18/part2_example3.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(46, result)
+    }
+
+    @Test
+    fun testPart2_Example4() {
+        val solution = Day18(loadTextResource("day18/part2_example4.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(1445, result)
+    }
+
+    @Test
+    fun testPart2_Example5() {
+        val solution = Day18(loadTextResource("day18/part2_example5.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(669060, result)
+    }
+
+    @Test
+    fun testPart2_Example6() {
+        val solution = Day18(loadTextResource("day18/part2_example6.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(23340, result)
+    }
+
+    @Test
+    fun testPart2_Puzzle() {
+        val solution = Day18(loadTextResource("day18/puzzle.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(185348874183674, result)
+    }
 }
