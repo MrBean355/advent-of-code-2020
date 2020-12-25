@@ -1,7 +1,7 @@
 package com.github.mrbean355.aoc.day17
 
 /**
- * Idea for storing a 3D grid as strings was borrowed from here: https://stackoverflow.com/a/53222261
+ * Idea for storing a multi-dimensional grid as strings was borrowed from here: https://stackoverflow.com/a/53222261.
  */
 class Grid private constructor(
     private val data: MutableSet<String> = mutableSetOf()
@@ -11,21 +11,21 @@ class Grid private constructor(
 
     fun size(): Int = data.size
 
-    fun setActive(x: Int, y: Int, z: Int) {
-        data += "$x,$y,$z"
+    fun setActive(x: Int, y: Int, z: Int = 0, w: Int = 0) {
+        data += "$x,$y,$z,$w"
     }
 
-    fun setInactive(x: Int, y: Int, z: Int) {
-        data -= "$x,$y,$z"
+    fun setInactive(x: Int, y: Int, z: Int, w: Int = 0) {
+        data -= "$x,$y,$z,$w"
     }
 
-    fun isActive(x: Int, y: Int, z: Int): Boolean {
-        return "$x,$y,$z" in data
+    fun isActive(x: Int, y: Int, z: Int, w: Int = 0): Boolean {
+        return "$x,$y,$z,$w" in data
     }
 
     fun range(): Range {
-        val min = mutableListOf(Int.MAX_VALUE, Int.MAX_VALUE, Int.MAX_VALUE)
-        val max = mutableListOf(Int.MIN_VALUE, Int.MIN_VALUE, Int.MIN_VALUE)
+        val min = mutableListOf(Int.MAX_VALUE, Int.MAX_VALUE, Int.MAX_VALUE, Int.MAX_VALUE)
+        val max = mutableListOf(Int.MIN_VALUE, Int.MIN_VALUE, Int.MIN_VALUE, Int.MIN_VALUE)
 
         data.forEach { key ->
             key.split(',').forEachIndexed { index, s ->
@@ -35,23 +35,25 @@ class Grid private constructor(
             }
         }
 
-        return Range(min[0], max[0], min[1], max[1], min[2], max[2])
+        return Range(min[0], max[0], min[1], max[1], min[2], max[2], min[3], max[3])
     }
 
-    fun countActiveNeighbors(x: Int, y: Int, z: Int): Int {
+    fun countActiveNeighbors(x: Int, y: Int, z: Int, w: Int = 0): Int {
         var count = 0
 
         for (i in x - 1..x + 1) {
             for (j in y - 1..y + 1) {
                 for (k in z - 1..z + 1) {
-                    if (isActive(i, j, k)) {
-                        ++count
+                    for (l in w - 1..w + 1) {
+                        if (isActive(i, j, k, l)) {
+                            ++count
+                        }
                     }
                 }
             }
         }
 
-        return if (isActive(x, y, z)) {
+        return if (isActive(x, y, z, w)) {
             count - 1
         } else {
             count
@@ -66,9 +68,13 @@ class Grid private constructor(
         return buildString {
             for (z in range.minZ..range.maxZ) {
                 appendLine("z=$z")
-                for (y in range.minY..range.maxY) {
-                    for (x in range.minX..range.maxX) {
-                        append(if (isActive(x, y, z)) ACTIVE else INACTIVE)
+                for (w in range.minW..range.maxW) {
+                    appendLine("w=$w")
+                    for (y in range.minY..range.maxY) {
+                        for (x in range.minX..range.maxX) {
+                            append(if (isActive(x, y, z, w)) ACTIVE else INACTIVE)
+                        }
+                        appendLine()
                     }
                     appendLine()
                 }
@@ -84,6 +90,8 @@ class Grid private constructor(
         val maxY: Int,
         val minZ: Int,
         val maxZ: Int,
+        val minW: Int,
+        val maxW: Int,
     )
 
     companion object {

@@ -14,7 +14,7 @@ class Day17(input: List<String>) : Puzzle {
         cubes.forEachIndexed { y, chars ->
             chars.forEachIndexed { x, ch ->
                 if (ch == Grid.ACTIVE) {
-                    grid.setActive(x, y, 0)
+                    grid.setActive(x, y)
                 }
             }
         }
@@ -43,11 +43,46 @@ class Day17(input: List<String>) : Puzzle {
             grid = copy
         }
 
-        println(grid)
         return grid.size().toLong()
     }
 
     override fun part2(): Long {
-        TODO("Not yet implemented")
+        var grid = Grid()
+
+        cubes.forEachIndexed { y, chars ->
+            chars.forEachIndexed { x, ch ->
+                if (ch == Grid.ACTIVE) {
+                    grid.setActive(x, y)
+                }
+            }
+        }
+
+        repeat(CYCLES) {
+            val range = grid.range()
+            val copy = grid.clone()
+
+            for (x in range.minX - 1..range.maxX + 1) {
+                for (y in range.minY - 1..range.maxY + 1) {
+                    for (z in range.minZ - 1..range.maxZ + 1) {
+                        for (w in range.minW - 1..range.maxW + 1) {
+                            val count = grid.countActiveNeighbors(x, y, z, w)
+                            if (grid.isActive(x, y, z, w)) {
+                                if (count != 2 && count != 3) {
+                                    copy.setInactive(x, y, z, w)
+                                }
+                            } else {
+                                if (count == 3) {
+                                    copy.setActive(x, y, z, w)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            grid = copy
+        }
+
+        return grid.size().toLong()
     }
 }

@@ -23,4 +23,22 @@ class Day17Test {
 
         assertEquals(295, result)
     }
+
+    @Test
+    fun testPart2_Example() {
+        val solution = Day17(loadTextResource("day17/part2_example.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(848, result)
+    }
+
+    @Test
+    fun testPart2_Puzzle() {
+        val solution = Day17(loadTextResource("day17/puzzle.txt"))
+
+        val result = solution.part2()
+
+        assertEquals(1972, result)
+    }
 }
