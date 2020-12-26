@@ -1,6 +1,6 @@
 package com.github.mrbean355.aoc.day15
 
-import com.github.mrbean355.aoc.base.loadTextResource
+import com.github.mrbean355.aoc.testing.loadTextResource
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

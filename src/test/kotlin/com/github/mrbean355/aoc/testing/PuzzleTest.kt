@@ -1,7 +1,6 @@
 package com.github.mrbean355.aoc.testing
 
 import com.github.mrbean355.aoc.base.Puzzle
-import com.github.mrbean355.aoc.base.loadTextResource
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import kotlin.reflect.KClass
