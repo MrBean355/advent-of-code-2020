@@ -1,23 +1,15 @@
-package com.github.mrbean355.aoc
+package com.github.mrbean355.aoc.day11
 
-import com.github.mrbean355.aoc.base.loadTextResource
+import com.github.mrbean355.aoc.base.Puzzle
 
-fun main() {
-    val seats = loadTextResource("day11.txt")
-        .map { it.toList() }
+class Day11(input: List<String>) : Puzzle {
 
-    seats.part1()
-    seats.part2()
-}
+    private val seats = input.map(String::toList)
 
-private fun List<List<Char>>.part1() {
-    val occupiedSeats = runSimulation(tolerance = 3, limited = true)
-    println("Part 1: $occupiedSeats")
-}
+    override fun part1(): Long = seats.runSimulation(tolerance = 3, limited = true)
 
-private fun List<List<Char>>.part2() {
-    val occupiedSeats = runSimulation(tolerance = 4, limited = false)
-    println("Part 2: $occupiedSeats")
+    override fun part2(): Long = seats.runSimulation(tolerance = 4, limited = false)
+
 }
 
 /**
@@ -25,7 +17,7 @@ private fun List<List<Char>>.part2() {
  * @param limited whether to only look at adjacent seats.
  * @return number of occupied seats when the simulation ends.
  */
-private fun List<List<Char>>.runSimulation(tolerance: Int, limited: Boolean): Int {
+private fun List<List<Char>>.runSimulation(tolerance: Int, limited: Boolean): Long {
     var seats = this
     var iterations = 0
 
@@ -38,7 +30,7 @@ private fun List<List<Char>>.runSimulation(tolerance: Int, limited: Boolean): In
         seats = next
     }
 
-    return seats.flatten().count { it.isOccupied() }
+    return seats.flatten().count { it.isOccupied() }.toLong()
 }
 
 private fun List<List<Char>>.iterate(tolerance: Int, limited: Boolean): List<List<Char>> {
