@@ -1,17 +1,21 @@
-package com.github.mrbean355.aoc
+package com.github.mrbean355.aoc.day5
 
-import com.github.mrbean355.aoc.base.loadTextResource
+import com.github.mrbean355.aoc.base.Puzzle
 
-fun main() {
-    val boardingPasses = loadTextResource("day5.txt")
-        .map(String::decodeBoardingPass)
-        .sorted()
+class Day5(input: List<String>) : Puzzle {
 
-    println("Highest seat ID: ${boardingPasses.last()}")
-    println("Missing set ID: ${boardingPasses.findMissingSeat()}")
+    private val boardingPasses = input.map(String::decodeBoardingPass).sorted()
+
+    override fun part1(): Long {
+        return boardingPasses.last()
+    }
+
+    override fun part2(): Long {
+        return boardingPasses.findMissingSeat()
+    }
 }
 
-private fun String.decodeBoardingPass(): Int {
+private fun String.decodeBoardingPass(): Long {
     check(length == 10) { "Invalid boarding pass: $this" }
 
     val row = take(7).findSeat(0..127)
@@ -20,7 +24,7 @@ private fun String.decodeBoardingPass(): Int {
     return row * 8 + col
 }
 
-private fun String.findSeat(range: IntRange): Int {
+private fun String.findSeat(range: IntRange): Long {
     var start = range.first
     var end = range.last
 
@@ -37,10 +41,10 @@ private fun String.findSeat(range: IntRange): Int {
         error("Couldn't find single entry")
     }
 
-    return start
+    return start.toLong()
 }
 
-private fun List<Int>.findMissingSeat(): Int {
+private fun List<Long>.findMissingSeat(): Long {
     for (i in 0 until size - 1) {
         val curr = get(i)
         val next = get(i + 1)
