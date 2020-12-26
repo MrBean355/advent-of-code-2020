@@ -1,18 +1,26 @@
-package com.github.mrbean355.aoc
+package com.github.mrbean355.aoc.day4
 
-import com.github.mrbean355.aoc.base.loadTextResource
+import com.github.mrbean355.aoc.base.Puzzle
 
-fun main() {
-    val passports = loadTextResource("day4.txt")
-    println("Part 1: ${passports.countValidPassports(validateProperties = false)}")
-    println("Part 2: ${passports.countValidPassports(validateProperties = true)}")
+class Day4(private val input: List<String>) : Puzzle {
+
+    override fun part1(): Long {
+        return input.countValidPassports(validateProperties = false)
+    }
+
+    override fun part2(): Long {
+        return input.countValidPassports(validateProperties = true)
+    }
 }
 
 private val requiredProperties = listOf("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")
+private val hairColour = """#[0-9a-f]{6}""".toRegex()
+private val eyeColours = listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth")
+private val passportId = """[0-9]{9}""".toRegex()
 
-private fun List<String>.countValidPassports(validateProperties: Boolean): Int {
+private fun List<String>.countValidPassports(validateProperties: Boolean): Long {
     val fields = mutableSetOf<String>()
-    var valid = 0
+    var valid = 0L
 
     forEach { line ->
         if (line.isBlank()) {
@@ -29,10 +37,6 @@ private fun List<String>.countValidPassports(validateProperties: Boolean): Int {
     }
     return valid
 }
-
-private val hairColour = """#[0-9a-f]{6}""".toRegex()
-private val eyeColours = listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth")
-private val passportId = """[0-9]{9}""".toRegex()
 
 private fun String.extractProperties(validateProperties: Boolean): List<String> {
     return split(' ').filter { prop ->
@@ -58,7 +62,7 @@ private fun String.extractProperties(validateProperties: Boolean): List<String> 
             "ecl" -> value in eyeColours
             "pid" -> value.matches(passportId)
             "cid" -> true
-            else -> error("Unexpected: $key")
+            else -> error("Unexpected property: $key")
         }
     }.map {
         it.substringBefore(':')

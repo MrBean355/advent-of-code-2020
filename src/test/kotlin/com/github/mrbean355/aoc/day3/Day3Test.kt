@@ -13,5 +13,4 @@ class Day3Test : PuzzleTest(Day3::class) {
         "day3/example.txt" to 336L,
         "day3/puzzle.txt" to 2138320800L,
     )
-
 }
