@@ -15,10 +15,10 @@ abstract class PuzzleTest(
 ) {
 
     /** Map of input files to expected outputs. */
-    abstract val part1TestCases: Map<String, Long>
+    abstract val part1TestCases: Map<String, Any>
 
     /** Map of input files to expected outputs. */
-    abstract val part2TestCases: Map<String, Long>
+    abstract val part2TestCases: Map<String, Any>
 
     @Test
     fun runPart1TestCases() {
