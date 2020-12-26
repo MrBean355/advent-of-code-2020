@@ -11,9 +11,3 @@ fun String.load(): List<String> {
     check(res != null) { "Couldn't load resource: $this" }
     return File(res.toURI()).readLines()
 }
-
-@Deprecated(
-    message = "Use extension function",
-    replaceWith = ReplaceWith("name.load()")
-)
-fun loadTextResource(name: String): List<String> = name.load()

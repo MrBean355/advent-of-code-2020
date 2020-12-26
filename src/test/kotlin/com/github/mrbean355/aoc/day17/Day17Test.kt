@@ -1,44 +1,16 @@
 package com.github.mrbean355.aoc.day17
 
-import com.github.mrbean355.aoc.testing.loadTextResource
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import com.github.mrbean355.aoc.testing.PuzzleTest
 
-class Day17Test {
+class Day17Test : PuzzleTest(Day17::class) {
 
-    @Test
-    fun testPart1_Example() {
-        val solution = Day17(loadTextResource("day17/part1_example.txt"))
+    override val part1TestCases = mapOf(
+        "day17/example.txt" to 112L,
+        "day17/puzzle.txt" to 295L,
+    )
 
-        val result = solution.part1()
-
-        assertEquals(112, result)
-    }
-
-    @Test
-    fun testPart1_Puzzle() {
-        val solution = Day17(loadTextResource("day17/puzzle.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(295, result)
-    }
-
-    @Test
-    fun testPart2_Example() {
-        val solution = Day17(loadTextResource("day17/part2_example.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(848, result)
-    }
-
-    @Test
-    fun testPart2_Puzzle() {
-        val solution = Day17(loadTextResource("day17/puzzle.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(1972, result)
-    }
+    override val part2TestCases = mapOf(
+        "day17/example.txt" to 848L,
+        "day17/puzzle.txt" to 1972L,
+    )
 }

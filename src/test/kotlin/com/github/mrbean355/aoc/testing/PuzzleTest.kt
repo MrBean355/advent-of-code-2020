@@ -46,6 +46,6 @@ abstract class PuzzleTest(
         val constructor = clazz.primaryConstructor
             ?: error("Class $clazz must have a primary constructor that accepts only List<String>")
 
-        return constructor.call(loadTextResource(input))
+        return constructor.call(input.load())
     }
 }

@@ -34,6 +34,7 @@ class Day15(input: List<String>) : Puzzle {
     }
 
     override fun part2(): Long {
-        TODO("Not yet implemented")
+        // TODO
+        return 0
     }
 }

@@ -1,134 +1,26 @@
 package com.github.mrbean355.aoc.day18
 
-import com.github.mrbean355.aoc.testing.loadTextResource
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import com.github.mrbean355.aoc.testing.PuzzleTest
 
-class Day18Test {
+class Day18Test : PuzzleTest(Day18::class) {
 
-    @Test
-    fun testPart1_Example1() {
-        val solution = Day18(loadTextResource("day18/part1_example1.txt"))
+    override val part1TestCases = mapOf(
+        "day18/example1.txt" to 71L,
+        "day18/example2.txt" to 51L,
+        "day18/example3.txt" to 26L,
+        "day18/example4.txt" to 437L,
+        "day18/example5.txt" to 12240L,
+        "day18/example6.txt" to 13632L,
+        "day18/puzzle.txt" to 11297104473091L,
+    )
 
-        val result = solution.part1()
-
-        assertEquals(71, result)
-    }
-
-    @Test
-    fun testPart1_Example2() {
-        val solution = Day18(loadTextResource("day18/part1_example2.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(51, result)
-    }
-
-    @Test
-    fun testPart1_Example3() {
-        val solution = Day18(loadTextResource("day18/part1_example3.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(26, result)
-    }
-
-    @Test
-    fun testPart1_Example4() {
-        val solution = Day18(loadTextResource("day18/part1_example4.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(437, result)
-    }
-
-    @Test
-    fun testPart1_Example5() {
-        val solution = Day18(loadTextResource("day18/part1_example5.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(12240, result)
-    }
-
-    @Test
-    fun testPart1_Example6() {
-        val solution = Day18(loadTextResource("day18/part1_example6.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(13632, result)
-    }
-
-    @Test
-    fun testPart1_Puzzle() {
-        val solution = Day18(loadTextResource("day18/puzzle.txt"))
-
-        val result = solution.part1()
-
-        assertEquals(11297104473091, result)
-    }
-
-    @Test
-    fun testPart2_Example1() {
-        val solution = Day18(loadTextResource("day18/part2_example1.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(231, result)
-    }
-
-    @Test
-    fun testPart2_Example2() {
-        val solution = Day18(loadTextResource("day18/part2_example2.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(51, result)
-    }
-
-    @Test
-    fun testPart2_Example3() {
-        val solution = Day18(loadTextResource("day18/part2_example3.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(46, result)
-    }
-
-    @Test
-    fun testPart2_Example4() {
-        val solution = Day18(loadTextResource("day18/part2_example4.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(1445, result)
-    }
-
-    @Test
-    fun testPart2_Example5() {
-        val solution = Day18(loadTextResource("day18/part2_example5.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(669060, result)
-    }
-
-    @Test
-    fun testPart2_Example6() {
-        val solution = Day18(loadTextResource("day18/part2_example6.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(23340, result)
-    }
-
-    @Test
-    fun testPart2_Puzzle() {
-        val solution = Day18(loadTextResource("day18/puzzle.txt"))
-
-        val result = solution.part2()
-
-        assertEquals(185348874183674, result)
-    }
+    override val part2TestCases = mapOf(
+        "day18/example1.txt" to 231L,
+        "day18/example2.txt" to 51L,
+        "day18/example3.txt" to 46L,
+        "day18/example4.txt" to 1445L,
+        "day18/example5.txt" to 669060L,
+        "day18/example6.txt" to 23340L,
+        "day18/puzzle.txt" to 185348874183674L,
+    )
 }

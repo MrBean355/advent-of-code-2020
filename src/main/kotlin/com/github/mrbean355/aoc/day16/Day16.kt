@@ -20,7 +20,8 @@ class Day16(val input: List<String>) : Puzzle {
     }
 
     override fun part2(): Long {
-        TODO("Not yet implemented")
+        // TODO
+        return 0
     }
 
     private fun parse(input: List<String>): Input {
