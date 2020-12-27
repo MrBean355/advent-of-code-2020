@@ -3,7 +3,20 @@ package com.github.mrbean355.aoc.day22
 class Player(
     val id: Int,
     val deck: MutableList<Int>
-)
+) {
+
+    fun score(): Int {
+        var factor = deck.size
+        return deck.sumBy {
+            it * factor--
+        }
+    }
+
+    fun copy(deckSize: Int): Player {
+        check(deck.size >= deckSize) { "Deck is too small" }
+        return Player(id, deck.subList(0, deckSize).toMutableList())
+    }
+}
 
 fun parseInput(input: List<String>): Pair<Player, Player> {
     val players = mutableListOf<Player>()
