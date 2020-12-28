@@ -1,9 +1,7 @@
 package com.github.mrbean355.aoc.day22
 
 import com.github.mrbean355.aoc.base.Puzzle
-
-/** Print debug messages about the rounds? */
-private const val DEBUG = false
+import com.github.mrbean355.aoc.base.debug
 
 class Day22(input: List<String>) : Puzzle {
 
@@ -80,9 +78,5 @@ class Day22(input: List<String>) : Puzzle {
         val winner = if (p1.deck.isEmpty()) p2 else p1
         debug("The winner of game $game is player ${winner.id}! Deck: ${winner.deck}")
         return winner
-    }
-
-    private fun debug(m: String) {
-        if (DEBUG) println(m)
     }
 }
